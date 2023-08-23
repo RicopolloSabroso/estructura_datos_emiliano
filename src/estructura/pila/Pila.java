@@ -9,7 +9,7 @@ public class Pila {
 		
 	}
 	public void push(Object value) {
-		if(stack.length<=size) {
+		if(stack.length>=size) {
 			stack[size]=value;
 			size++;
 		}
