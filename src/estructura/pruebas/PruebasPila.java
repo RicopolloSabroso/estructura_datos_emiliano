@@ -15,9 +15,10 @@ public class PruebasPila {
 		stack.push(5);
 		stack.push(59);
 		System.out.println(stack.isEmpty());
+		System.out.println(stack.size());
 		System.out.println(stack.peak());
 		Object value=stack.pop();
-		System.out.println(value);
+		System.out.println(stack);
 	}
 
 }
