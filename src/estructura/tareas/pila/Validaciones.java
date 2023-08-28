@@ -16,5 +16,18 @@ public class Validaciones {
 		}
 		return j==valor.length() ;
 	}
+	public boolean parentesis(String valor) {
+		Pila stack= new Pila(valor.length());
+		for(int i=0;i<valor.length();i++) {
+			if(valor.charAt(i)=='(') {
+				stack.push(valor.charAt(i));
+			}else if(valor.charAt(i)==')'){
+				 if(stack.isEmpty()||'('!=(char)stack.pop()) {
+					 return false;
+				 }
+			}
+		}
+		return stack.isEmpty();
+	}
 	
 }

@@ -12,12 +12,20 @@ public class TareaPila {
 		String valor;
 		System.out.println("Escriba la palabra o numero");
 		valor=leer.nextLine();
-		valor=validar.sinEspacios(valor);
+		/*Esto es el ejemplo de las palabras palindromas y numeros
+		valor=validar.sinEspacios(valor);                  
 		Pila stack=new Pila(valor.length());
 		for(int i=0;i<valor.length();i++) {
 			stack.push(valor.charAt(i));
 		}
-		System.out.println(validar.verificar(stack, valor));
+		System.out.println(validar.verificar(stack, valor));*/
+		
+		
+		/*Esta es la de parentesis
+		System.out.println(validar.parentesis(valor));
+		*/
+		
+		
 	}
 	
 
