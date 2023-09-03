@@ -7,7 +7,7 @@ public class Validaciones {
 		valor=valor.replaceAll(" +", "");
 		return valor;
 	}
-	public boolean verificar(Pila stack, String valor) {
+	public boolean verificarPalindroma(Pila stack, String valor) {
 		int j=0, tamaño=stack.size();
 		for(int i=0;i<tamaño;i++) {
 			if(String.valueOf(valor.charAt(i)).equalsIgnoreCase(stack.pop().toString())) {
@@ -29,5 +29,55 @@ public class Validaciones {
 		}
 		return stack.isEmpty();
 	}
+	public Pila postfija(String valor) {
+		Pila postfija= new Pila(valor.length());
+		Pila operadores= new Pila(valor.length());
+		String numeroCompleto="";
+		char numero;
+		for (int i = 0; i < valor.length(); i++) {
+			numero=valor.charAt(i);
+			if (numero == '(') {
+				operadores.push(numero);
+				if (numeroCompleto!="") {
+					postfija.push(numeroCompleto);
+					numeroCompleto="";
+				}
+			} else if (numero == ')') {
+				while (!operadores.isEmpty() && (char)operadores.peak() != '(') {
+					postfija.push(String.valueOf(operadores.pop()));
+				}
+				operadores.pop(); //duda, si hago una comparacion de un peak nulo con un parentesis truena el programa?
+				if (numeroCompleto!="") {
+					postfija.push(numeroCompleto);
+					numeroCompleto="";
+				}
+			}if (Character.isDigit(numero)) { 
+				numeroCompleto+=numero;
+			}else if (operadoresOrden(numero)==1||operadoresOrden(numero)==2){
+				while (!operadores.isEmpty() && operadoresOrden(operadores.peak()) >= operadoresOrden(numero)) {
+					postfija.push(String.valueOf(operadores.pop()));
+				}
+				operadores.push(numero);
+				if (numeroCompleto!="") {
+					postfija.push(numeroCompleto);
+					numeroCompleto="";
+				}
+			}
+		}
+		while (!operadores.isEmpty()) {
+            postfija.push(String.valueOf(operadores.pop()));
+        }
+		
+		return postfija;
+	}
 	
+	public int operadoresOrden(Object valor) {
+		int respuesta=0;
+		if((char)valor=='+'||(char)valor=='-') {
+			respuesta=1;
+		}else if((char)valor=='*'||(char)valor=='/') {
+			respuesta=2;
+		}
+		return respuesta;
+	}
 }
