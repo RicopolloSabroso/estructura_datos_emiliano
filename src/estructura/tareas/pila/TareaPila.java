@@ -1,8 +1,5 @@
 package estructura.tareas.pila;
 import java.util.Scanner;
-import estructura.pila.Pila;
-import estructura.tareas.pila.Validaciones;
-
 public class TareaPila {
 
 	public static void main(String[] args) {
@@ -18,10 +15,11 @@ public class TareaPila {
 			System.out.println(validar.postfijaResuelta(validar.postfija(valor)));
 		}else {
 		System.out.println("No tiene bien los parentesis");
+	
 		}
 		
 		
-		
+		leer.close();
 	}
 	
 
