@@ -43,26 +43,35 @@ public class Validaciones {
 					numeroCompleto="";
 				}
 			} else if (numero == ')') {
+				if (numeroCompleto!="") {
+					postfija.push(numeroCompleto);
+					numeroCompleto="";
+				}
 				while (!operadores.isEmpty() && (char)operadores.peak() != '(') {
 					postfija.push(String.valueOf(operadores.pop()));
 				}
 				operadores.pop(); //duda, si hago una comparacion de un peak nulo con un parentesis truena el programa?
-				if (numeroCompleto!="") {
-					postfija.push(numeroCompleto);
-					numeroCompleto="";
-				}
+				
 			}if (Character.isDigit(numero)) { 
 				numeroCompleto+=numero;
 			}else if (operadoresOrden(numero)==1||operadoresOrden(numero)==2){
-				while (!operadores.isEmpty() && operadoresOrden(operadores.peak()) >= operadoresOrden(numero)) {
-					postfija.push(String.valueOf(operadores.pop()));
-				}
-				operadores.push(numero);
 				if (numeroCompleto!="") {
 					postfija.push(numeroCompleto);
 					numeroCompleto="";
 				}
+				while (!operadores.isEmpty() && operadoresOrden(operadores.peak()) >= operadoresOrden(numero)) {
+					if((char)operadores.peak()!=(char)numero){
+						postfija.push(String.valueOf(operadores.pop()));
+					}else {
+						break;
+					}
+				}
+				operadores.push(numero);
 			}
+		}
+		if (numeroCompleto!="") {
+			postfija.push(numeroCompleto);
+			numeroCompleto="";
 		}
 		while (!operadores.isEmpty()) {
             postfija.push(String.valueOf(operadores.pop()));
@@ -70,8 +79,8 @@ public class Validaciones {
 		
 		return postfija;
 	}
-	
-	public int operadoresOrden(Object valor) {
+
+	private int operadoresOrden(Object valor) {
 		int respuesta=0;
 		if((char)valor=='+'||(char)valor=='-') {
 			respuesta=1;

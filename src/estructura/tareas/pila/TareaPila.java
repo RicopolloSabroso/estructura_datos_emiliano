@@ -14,6 +14,7 @@ public class TareaPila {
 		valor=leer.nextLine();
 		valor=validar.sinEspacios(valor);                  
 		System.out.println(validar.parentesis(valor));
+		System.out.println(validar.postfija(valor));
 		
 		
 	}
