@@ -13,11 +13,17 @@ public class TareaPila {
 		System.out.println("Escriba la ecuacion");
 		valor=leer.nextLine();
 		valor=validar.sinEspacios(valor);                  
-		System.out.println(validar.parentesis(valor));
-		System.out.println(validar.postfija(valor));
+		if(validar.parentesis(valor)) {
+			System.out.println(validar.postfija(valor));
+			System.out.println(validar.postfijaResuelta(validar.postfija(valor)));
+		}else {
+		System.out.println("No tiene bien los parentesis");
+		}
+		
 		
 		
 	}
 	
 
 }
+

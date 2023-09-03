@@ -59,7 +59,7 @@ public class Validaciones {
 					postfija.push(numeroCompleto);
 					numeroCompleto="";
 				}
-				while (!operadores.isEmpty() && operadoresOrden(operadores.peak()) >= operadoresOrden(numero)) {
+				while (!operadores.isEmpty() && operadoresOrden((char)operadores.peak()) >= operadoresOrden(numero)) {
 					if((char)operadores.peak()!=(char)numero){
 						postfija.push(String.valueOf(operadores.pop()));
 					}else {
@@ -80,13 +80,68 @@ public class Validaciones {
 		return postfija;
 	}
 
-	private int operadoresOrden(Object valor) {
+	private int operadoresOrden(char valor) {
 		int respuesta=0;
-		if((char)valor=='+'||(char)valor=='-') {
+		if(valor=='+'||valor=='-') {
 			respuesta=1;
-		}else if((char)valor=='*'||(char)valor=='/') {
+		}else if(valor=='*'||valor=='/') {
 			respuesta=2;
 		}
+		return respuesta;
+	}
+	public double postfijaResuelta(Pila postfija) {
+		Pila respuesta= new Pila(postfija.size());
+		Pila aux= new Pila(postfija.size());
+		double resultado=0;
+		Object aux2;
+		int size=postfija.size();
+		for(int i=0;i<size;i++) {
+			if(!postfija.isEmpty()) {
+				aux.push(postfija.pop());	
+			}
+		}
+		while (!aux.isEmpty()) {
+			aux2=aux.pop();
+			if (numero(aux2)) {
+                respuesta.push(Double.parseDouble(String.valueOf(aux2)));
+            } else {
+            	String cadena=aux2.toString();
+            	if (operadoresOrden(cadena.charAt(0))==1||operadoresOrden(cadena.charAt(0))==2) {
+                    resultado = operacion(Double.parseDouble(String.valueOf(respuesta.pop())),Double.parseDouble(String.valueOf(respuesta.pop())),cadena);
+                    respuesta.push(resultado);
+                }
+            }
+            	
+		}
+		
+		return Double.parseDouble(String.valueOf(respuesta.pop()));
+	}
+	
+	private boolean numero(Object valor) {
+		boolean respuesta;
+		try {
+			Double.parseDouble(String.valueOf(valor));
+			respuesta=true;
+			
+		}catch(Exception ex) {
+			respuesta=false;
+		}
+		
+		return respuesta;
+	}
+	private double operacion( double operando2, double operando, String operador) {
+		 double respuesta=0;
+			if (operador.equals("+")) {
+				respuesta=operando+operando2;
+		    } else if (operador.equals("-")) {
+		    	respuesta=operando-operando2;
+		    } else if (operador.equals("*")) {
+		    	respuesta=operando*operando2;
+		    } else if (operador.equals("/")) {
+		        if (operando2 != 0) {
+		        	respuesta=operando/operando2;
+		        }
+		    }
 		return respuesta;
 	}
 }
