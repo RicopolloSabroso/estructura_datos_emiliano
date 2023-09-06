@@ -32,7 +32,7 @@ public class LinkedStack {
 
 	public Object pop() {
 		Object value=null;
-		if(null!=apuntador.getEnlace()) {
+		if(null!=apuntador) {
 			value=apuntador.getDato();
 			this.apuntador=apuntador.getEnlace();
 			size--;
