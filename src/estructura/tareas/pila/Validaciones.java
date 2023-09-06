@@ -1,5 +1,6 @@
 package estructura.tareas.pila;
 
+import estructura.nodo.LinkedStack;
 import estructura.pila.Pila;
 
 public class Validaciones {
@@ -29,9 +30,9 @@ public class Validaciones {
 		}
 		return stack.isEmpty();
 	}
-	public Pila postfija(String valor) {
-		Pila postfija= new Pila(valor.length());
-		Pila operadores= new Pila(valor.length());
+	public LinkedStack postfija(String valor) {
+		LinkedStack postfija= new LinkedStack();
+		LinkedStack operadores= new LinkedStack();
 		String numeroCompleto="";
 		char numero;
 		for (int i = 0; i < valor.length(); i++) {
@@ -89,9 +90,9 @@ public class Validaciones {
 		}
 		return respuesta;
 	}
-	public double postfijaResuelta(Pila postfija) {
-		Pila respuesta= new Pila(postfija.size());
-		Pila aux= new Pila(postfija.size());
+	public double postfijaResuelta(LinkedStack postfija) {
+		LinkedStack respuesta= new LinkedStack();
+		LinkedStack aux= new LinkedStack();
 		double resultado=0;
 		Object aux2;
 		int size=postfija.size();

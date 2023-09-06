@@ -1,5 +1,7 @@
 package estructura.cola;
 
+import estructura.nodo.Nodo;
+
 public class CircularQueue {
 	private Object[] queue;
 	private int size;
@@ -33,5 +35,31 @@ public class CircularQueue {
 			}
 		}
 		return value;
+	}
+	public boolean isEmpty() {
+		return size==0;
+	}
+	public int size() {
+		return size;
+	}
+	public Object front() {
+		return queue[front];
+	}
+	public Object rear() {
+		int rearAux=rear-1;
+		rearAux=rearAux<0?queue.length-1:rearAux;
+		return queue[rearAux];
+	}
+	public String toString() {
+		int sizeAux=size;
+		int rearAux=rear;
+		String s="";
+		while(sizeAux>0) {
+			sizeAux--;
+			rearAux--;
+			rearAux=rearAux<0?queue.length-1:rearAux;
+			s+=queue[rearAux]+"->";
+		}
+		return s.toString();
 	}
 }
