@@ -60,6 +60,6 @@ public class CircularQueue {
 			rearAux=rearAux<0?queue.length-1:rearAux;
 			s+=queue[rearAux]+"->";
 		}
-		return s.toString();
+		return s;
 	}
 }

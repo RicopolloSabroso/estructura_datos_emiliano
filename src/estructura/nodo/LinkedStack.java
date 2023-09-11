@@ -27,7 +27,7 @@ public class LinkedStack {
 		return null==apuntador;
 	}
 	public Object peak() {
-		return apuntador.getDato();
+		return null!=apuntador?apuntador.getDato():null;
 	}
 
 	public Object pop() {
@@ -47,7 +47,7 @@ public class LinkedStack {
 			s=temp.getDato()+"<-"+s;
 			temp=temp.getEnlace();
 		}
-		return s.toString();
+		return s;
 	}
 	
 	
