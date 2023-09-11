@@ -1,6 +1,6 @@
 package estructura.cola;
 
-import estructura.nodo.Nodo;
+
 
 public class CircularQueue {
 	private Object[] queue;
