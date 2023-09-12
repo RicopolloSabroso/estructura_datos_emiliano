@@ -10,7 +10,7 @@ public class TareaMaquina {
 		Scanner leer=new Scanner(System.in);
 		Movimientos movimiento=new Movimientos();
 		Validaciones validar=new Validaciones();
-		String opcion;
+		String opcion, numero;
 		boolean ciclo=false;
 		do {
 			System.out.println("\tMi maquina expendedora "+"\n"+"Escoge una opcion:"+"\n"+"1)Agregar Productos"+"\n"+"2)Comprar"+"\n"+"3)Agregar Monedas"+"\n"+"4)Estado Maquina"+"\n"+"5)Salir");
@@ -21,7 +21,17 @@ public class TareaMaquina {
 					{
 						case 1:
 							do {
-								
+								System.out.println("Escoge una opcion:"+"\n"+"1)Papas"+"\n"+"2)Refrescos"+"\n"+"3)Gomitas"+"\n"+"4)Agua"+"\n"+"5)Dulces");
+								opcion=leer.nextLine();
+								if(movimiento.validarLleno(Integer.parseInt(opcion))) {
+									System.out.println("Cuantos quiere agregar?");
+									numero=leer.nextLine();
+									if() {
+										
+									}
+								}else {
+									
+								}
 							}while(ciclo);
 						case 2:
 							do {

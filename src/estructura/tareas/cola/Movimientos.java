@@ -23,7 +23,95 @@ public class Movimientos {
 		}
 		
 	}
-	
+	public boolean validarLleno(int opcion) {
+		boolean respuesta=false;
+		switch(opcion){
+			case 1:
+				if(colas[0].size()==10) {
+					respuesta=true;
+				}
+				break;
+			case 2:
+				if(colas[1].size()==10) {
+					respuesta=true;
+				}
+				break;
+			case 3:
+				if(colas[2].size()==10) {
+					respuesta=true;
+				}
+				break;
+			case 4:
+				if(colas[3].size()==10) {
+					respuesta=true;
+				}
+				break;
+			case 5:
+				if(colas[4].size()==10) {
+					respuesta=true;
+				}
+				break;
+		}
+		return respuesta;
+	}
+	public String llenarProducto(int opcion, int numero) {
+		String respuesta="Se agregaron ";
+		int j=0;
+		switch(opcion){
+			case 1:
+				for(int i=0; i<numero;i++) {
+					if(colas[0].size()!=10) {
+						colas[0].enqueue(1);
+						j++;
+					}else {
+						break;
+					}	
+				}
+				break;
+			case 2:
+				for(int i=0; i<numero;i++) {
+					if(colas[1].size()!=10) {
+						colas[1].enqueue(1);
+						j++;
+					}else {
+						break;
+					}	
+				}
+				break;
+			case 3:
+				for(int i=0; i<numero;i++) {
+					if(colas[2].size()!=10) {
+						colas[2].enqueue(1);
+						j++;
+					}else {
+						break;
+					}	
+				}
+				break;
+			case 4:
+				for(int i=0; i<numero;i++) {
+					if(colas[3].size()!=10) {
+						colas[3].enqueue(1);
+						j++;
+					}else {
+						break;
+					}	
+				}
+				break;
+			case 5:
+				for(int i=0; i<numero;i++) {
+					if(colas[4].size()!=10) {
+						colas[4].enqueue(1);
+						j++;
+					}else {
+						break;
+					}	
+				}
+				break;
+		}
+		respuesta+=j+"Producto/s";
+		return respuesta;
+	}
 	public String informacionMaquina() {
 		String respuesta= "Papas\t|Refrescos\t|Gomitas\t|Agua\t|Dulces\n";
 		for(int i=0; i<colas.length;i++) {
