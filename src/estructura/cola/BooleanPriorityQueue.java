@@ -1,10 +1,12 @@
-package estructura.nodo;
+package estructura.cola;
 
-public class LinkedQueue {
+import estructura.nodo.BooleanNodo;
+
+public class BooleanPriorityQueue {
 	private int size;
-	private Nodo front;
-	private Nodo rear;
-	public LinkedQueue() {
+	private BooleanNodo front;
+	private BooleanNodo rear;
+	public BooleanPriorityQueue() {
 		this.size=0;
 		this.rear=null;
 		this.front=null;
@@ -15,13 +17,15 @@ public class LinkedQueue {
 	public boolean isEmpty() {
 		return size==0;
 	}
-	public void enqueue(Object value) {
-		Nodo nodo=new Nodo();
+	public void enqueue(Object value, boolean priority) {
+		BooleanNodo nodo=new BooleanNodo();
 		nodo.setDato(value);
-		if(null!=rear) {
-			nodo.setEnlace(rear);
+		nodo.setPrioridad(priority);
+		if(null==rear) {
+			rear=nodo;
+			rear=front;
 		}else if(null==front) {
-			this.front=nodo;
+			
 		}
 		this.rear=nodo;
 		this.size++;
@@ -42,10 +46,10 @@ public class LinkedQueue {
 		return null!=rear?rear.getDato():null;
 	}
 	public String toString() {
-		Nodo temp=rear;
+		BooleanNodo temp=front;
 		String s="";
 		while(null!=temp) {
-			s=temp.getDato()+"<-"+s;
+			s=temp.getDato()+"->"+s;
 			temp=temp.getEnlace();
 		}
 		return s;

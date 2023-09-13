@@ -1,4 +1,6 @@
-package estructura.nodo;
+package estructura.pila;
+
+import estructura.nodo.Nodo;
 
 public class LinkedStack {
 	private Nodo apuntador;

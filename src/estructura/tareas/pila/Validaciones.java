@@ -1,6 +1,6 @@
 package estructura.tareas.pila;
 
-import estructura.nodo.LinkedStack;
+import estructura.pila.LinkedStack;
 import estructura.pila.Pila;
 
 public class Validaciones {
