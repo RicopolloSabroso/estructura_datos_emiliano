@@ -8,7 +8,7 @@ public class PruebasPila {
 		// TODO Auto-generated method stub
 		Pila stack= new Pila(10);
 		System.out.println(stack.peak());
-//		System.out.println(stack.size());
+		System.out.println(stack.size());
 //		System.out.println(stack);
 		stack.push(10);
 		stack.push(4);
