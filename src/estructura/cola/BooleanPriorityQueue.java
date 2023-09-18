@@ -23,11 +23,24 @@ public class BooleanPriorityQueue {
 		nodo.setPrioridad(priority);
 		if(null==rear) {
 			rear=nodo;
-			rear=front;
-		}else if(null==front) {
-			
+			front=rear;
+		}else if(priority){
+			BooleanNodo temp=front;
+			while(null!=temp.getEnlace()&&temp.getEnlace().getPrioridad()){
+				temp=temp.getEnlace();
+			}
+			if(null== temp.getEnlace()) {
+				rear.setEnlace(nodo);
+				rear=nodo;
+			}else {
+				BooleanNodo siguiente=temp.getEnlace();
+				temp.setEnlace(nodo);
+				nodo.setEnlace(siguiente);
+			}
+		}else {
+			rear.setEnlace(nodo);
+			rear=nodo;
 		}
-		this.rear=nodo;
 		this.size++;
 	}
 	public Object dequeue() {
