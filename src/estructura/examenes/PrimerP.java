@@ -8,13 +8,13 @@ public class PrimerP {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		System.out.println(primeraPregunta());
+		//System.out.println(primeraPregunta());
 		//System.out.println(segundaPregunta());
-		//terceraPregunta();
+		terceraPregunta();
 		//cuartaPregunta();
 	}
 	public static int primeraPregunta() { 
-		Pila stack= new Pila(100);
+	Pila stack= new Pila(101);
 		int numero,suma=0;
 		while(true) {
 			numero=(1+(int)(Math.random()*100));
@@ -68,7 +68,7 @@ public class PrimerP {
 		for(int i=0;i<rep.length;i++) {
 			if (rep[i] == 1) {
                 ar[i]=i;
-                System.out.println(i);
+                System.out.println(i+1);
             }
 					
 		}
