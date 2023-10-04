@@ -6,7 +6,8 @@ public class BancoBanorte {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Ingresar().run();
+		Ingresar ingreso=new Ingresar();
+		ingreso.run();
 
 		
 	}
