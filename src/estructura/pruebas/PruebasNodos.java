@@ -4,6 +4,7 @@ import estructura.cola.CircularQueue;
 import estructura.cola.LinkedQueue;
 import estructura.cola.NumericPriorityQueue;
 import estructura.nodo.*;
+import estructura.pila.LinkedStack;
 import estructura.pila.Pila;
 public class PruebasNodos {
 	public static void main(String[] args) {
@@ -12,11 +13,11 @@ public class PruebasNodos {
 		System.out.println(stack.size());
 		
 		
-		stack.enqueue(4,3);
-
-		stack.enqueue(5,7);
-		stack.enqueue(10,1);
-		stack.enqueue(59,5);
+		stack.enqueue("A",7);
+		stack.enqueue("B",1);
+		stack.enqueue("C",5);
+		stack.enqueue("D",3);
+		stack.enqueue("E",8);
 		System.out.println(stack);
 //		System.out.println(stack.isEmpty());
 //		System.out.println(stack.size());
