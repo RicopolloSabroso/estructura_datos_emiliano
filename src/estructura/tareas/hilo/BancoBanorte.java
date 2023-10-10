@@ -9,12 +9,12 @@ public class BancoBanorte {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Ingresar ingreso=new Ingresar();
-		ingreso.start();;
+		ingreso.start();
 		Scanner leer=new Scanner(System.in);
 		String opcion;
 		boolean ciclo=false;
 		IngresarCajas ingresoCaja=new IngresarCajas();
-		ingresoCaja.start();;
+		ingresoCaja.start();
 		do {			
 			System.out.println("\tBanorte "+"\n"+"Escoge una opcion:"+"\n"+"1)Estatus del Banco"+"\n"+"2)Salir");
 			opcion=leer.nextLine();
@@ -67,7 +67,7 @@ public class BancoBanorte {
 			ingreso.cola.enqueue(persona, persona.prioridad);
 		}
 		for(int i=1; i<=4;i++) {
-			respuesta+="\tCaja "+ i+"\n"+"\nCuenta\t|Accion\t|Monto\n";
+			respuesta+="\tCaja "+ i+"\n"+"Cuenta\t|Accion\t|Monto\n";
 			switch (i) {
 			case 1:
 				if(caja1.getEstado()) {

@@ -10,9 +10,9 @@ public class Caja1 extends Thread{
 	public void run() {
 			try {
 				if(!ingreso.cola.isEmpty()) {
-					estado=true;	
+					this.estado=true;	
 					this.persona=(Persona)ingreso.cola.dequeue();
-					sleep((int)(1+Math.random()*10000));
+					sleep((int)(1+Math.random()*100000));
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
 					}else {
