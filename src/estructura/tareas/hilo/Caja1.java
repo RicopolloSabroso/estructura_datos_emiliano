@@ -9,14 +9,16 @@ public class Caja1 extends Thread{
 	Ingresar ingreso=new Ingresar();	
 	public void run() {
 			try {
-				if(!ingreso.cola.isEmpty()) {
+				if(ingreso.cola.size()<=1) {
 					this.estado=true;	
 					this.persona=(Persona)ingreso.cola.dequeue();
+					
 					sleep((int)(1+Math.random()*100000));
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
 					}else {
 						cajaVacia();
+						System.out.println(cajaExpendedora.getBillete200());
 						persona.setCartera(retiro(persona.getMonto()));
 					}
 				}

@@ -8,16 +8,19 @@ import estructura.pila.LinkedStack;
 import estructura.pila.Pila;
 public class PruebasNodos {
 	public static void main(String[] args) {
-		NumericPriorityQueue stack= new NumericPriorityQueue();
+		BooleanPriorityQueue stack= new BooleanPriorityQueue();
 		System.out.println(stack.isEmpty());
 		System.out.println(stack.size());
 		
 		
-		stack.enqueue("A",7);
-		stack.enqueue("B",1);
-		stack.enqueue("C",5);
-		stack.enqueue("D",3);
-		stack.enqueue("E",8);
+		stack.enqueue("A",true);
+		stack.enqueue("B",false);
+		stack.enqueue("C",false);
+		stack.enqueue("D",true);
+		stack.enqueue("E",true);
+		System.out.println(stack.isEmpty());
+		stack.dequeue();
+		stack.dequeue();
 		System.out.println(stack);
 //		System.out.println(stack.isEmpty());
 //		System.out.println(stack.size());

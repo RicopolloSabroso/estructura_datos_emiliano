@@ -9,11 +9,12 @@ public class Prueba {
 		Ingresar ingreso=new Ingresar();
 		ingreso.start();
 		
-		IngresarCajas ingresoCaja=new IngresarCajas();
-		ingresoCaja.start();
-		
+//		IngresarCajas ingresoCaja=new IngresarCajas();
+//		ingresoCaja.start();
+//		Caja1 caja1= new Caja1();
+//		caja1.start();
 		//while(true) {
-			System.out.println(ingreso.cola.size());
+
 		//}informacioBanco()
 	}
 
