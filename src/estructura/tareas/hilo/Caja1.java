@@ -3,17 +3,16 @@ import estructura.cola.BooleanPriorityQueue;
 import estructura.pila.LinkedStack;
 import estructura.tareas.hilo.*;
 public class Caja1 extends Thread{
-	public Persona persona;
-	public boolean estado=false;
+	private Persona persona;
+	private boolean estado=false;
 	private BooleanPriorityQueue ingresos;
-//	Ingresar ingreso=new Ingresar();
 	Billete cajaExpendedora= new Billete();
 	public Caja1(BooleanPriorityQueue cola) {
 		this.ingresos=cola;
 	}
 	public void run() {
 			try {
-				System.out.println("hola");
+				//System.out.println("hola");
 				sleep((int)(1+Math.random()*10000));
 				if(!ingresos.isEmpty()) {
 					System.out.println("o");
@@ -31,7 +30,6 @@ public class Caja1 extends Thread{
 					}
 				}
 			}catch(InterruptedException e) {}
-			System.out.println("adios");
 			estado=false;
 		}
 	public Billete getCajaExpendedora() {

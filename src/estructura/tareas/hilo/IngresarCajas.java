@@ -1,11 +1,17 @@
 package estructura.tareas.hilo;
 
 public class IngresarCajas  extends Thread {
-	Caja1 caja1= new Caja1();
-	Caja2 caja2= new Caja2();
-	Caja3 caja3= new Caja3();
-	Caja4 caja4= new Caja4();
 	Ingresar ingreso=new Ingresar();
+	private Caja1 caja1;
+	private Caja1 caja2;
+	private Caja1 caja3;
+	private Caja1 caja4;
+	public IngresarCajas(){
+		this.caja1= new Caja1(ingreso.getCola());
+		this.caja2= new Caja1(ingreso.getCola());
+		this.caja3= new Caja1(ingreso.getCola());
+		this.caja4= new Caja1(ingreso.getCola());
+	}
 	public void run() {
 		try {
 			do {
@@ -23,5 +29,17 @@ public class IngresarCajas  extends Thread {
 				}
 			}while(true);
 		}catch(InterruptedException e) {}
+	}
+	public Caja1 getCaja1() {
+		return caja1;
+	}
+	public Caja1 getCaja2() {
+		return caja2;
+	}
+	public Caja1 getCaja3() {
+		return caja3;
+	}
+	public Caja1 getCaja4() {
+		return caja4;
 	}
 }
