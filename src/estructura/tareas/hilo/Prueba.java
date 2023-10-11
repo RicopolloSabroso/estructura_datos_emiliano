@@ -11,8 +11,8 @@ public class Prueba {
 		
 //		IngresarCajas ingresoCaja=new IngresarCajas();
 //		ingresoCaja.start();
-//		Caja1 caja1= new Caja1();
-//		caja1.start();
+		Caja1 caja1= new Caja1(ingreso.getCola());
+		caja1.start();
 		//while(true) {
 
 		//}informacioBanco()

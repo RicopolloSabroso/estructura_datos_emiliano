@@ -17,31 +17,47 @@ public class BooleanPriorityQueue {
 	public boolean isEmpty() {
 		return size==0;
 	}
-	public void enqueue(Object value, boolean priority) {
-		BooleanNodo nodo=new BooleanNodo();
-		nodo.setDato(value);
-		nodo.setPrioridad(priority);
-		if(null==rear) {
-			rear=nodo;
-			front=rear;
-		}else if(priority){
-			BooleanNodo temp=front;
-			while(null!=temp.getEnlace()&&temp.getEnlace().getPrioridad()){
-				temp=temp.getEnlace();
-			}
-			if(null== temp.getEnlace()) {
-				rear.setEnlace(nodo);
-				rear=nodo;
-			}else {
-				BooleanNodo siguiente=temp.getEnlace();
-				temp.setEnlace(nodo);
-				nodo.setEnlace(siguiente);
-			}
-		}else {
-			rear.setEnlace(nodo);
-			rear=nodo;
-		}
-		this.size++;
+	public void enqueue(Object value, boolean prioridad) 
+	{
+		BooleanNodo nodo = new BooleanNodo();
+	    nodo.setDato(value);
+	    nodo.setPrioridad(prioridad);
+
+	    if (null == front) 
+	    {
+	    	front = nodo;
+	        rear = nodo;
+	    }
+	    else if (prioridad) 
+	    {
+	     
+	        BooleanNodo temp = front;
+	        BooleanNodo prev = null;
+
+	        while (temp != null && temp.getPrioridad()) 
+	        {
+	            prev = temp;
+	            temp = temp.getEnlace();
+	        }
+
+	        if (prev != null) 
+	        {
+	            prev.setEnlace(nodo);
+	            nodo.setEnlace(temp);
+	        }
+	        else 
+	        {
+	        	nodo.setEnlace(front);
+	        	front = nodo;
+	        }
+	    } 
+	    else 
+	    {
+	        rear.setEnlace(nodo);
+	        rear= nodo;
+	    }
+
+	    size++;
 	}
 	public Object dequeue() {
 		Object value=null;

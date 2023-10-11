@@ -1,21 +1,29 @@
 package estructura.tareas.hilo;
+import estructura.cola.BooleanPriorityQueue;
 import estructura.pila.LinkedStack;
 import estructura.tareas.hilo.*;
 public class Caja1 extends Thread{
-	Billete cajaExpendedora= new Billete();
 	public Persona persona;
-	private boolean estado=false;
-	
-	Ingresar ingreso=new Ingresar();	
+	public boolean estado=false;
+	private BooleanPriorityQueue ingresos;
+//	Ingresar ingreso=new Ingresar();
+	Billete cajaExpendedora= new Billete();
+	public Caja1(BooleanPriorityQueue cola) {
+		this.ingresos=cola;
+	}
 	public void run() {
 			try {
-				if(ingreso.cola.size()<=1) {
+				System.out.println("hola");
+				sleep((int)(1+Math.random()*10000));
+				if(!ingresos.isEmpty()) {
+					System.out.println("o");
 					this.estado=true;	
-					this.persona=(Persona)ingreso.cola.dequeue();
-					
+					this.persona=(Persona)ingresos.dequeue();
+					System.out.println(persona.getCuenta());
 					sleep((int)(1+Math.random()*100000));
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
+						System.out.println("ho");
 					}else {
 						cajaVacia();
 						System.out.println(cajaExpendedora.getBillete200());
@@ -23,6 +31,7 @@ public class Caja1 extends Thread{
 					}
 				}
 			}catch(InterruptedException e) {}
+			System.out.println("adios");
 			estado=false;
 		}
 	public Billete getCajaExpendedora() {
