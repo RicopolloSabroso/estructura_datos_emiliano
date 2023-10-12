@@ -12,6 +12,15 @@ public class BancoBanorte {
 		ingreso.start();
 		Scanner leer=new Scanner(System.in);
 		String opcion;
+		Caja1 caja1= new Caja1(ingreso.getCola());
+		caja1.start();
+		Caja1 caja2= new Caja1(ingreso.getCola());	 
+		caja2.start();
+		Caja1 caja3= new Caja1(ingreso.getCola());	 
+		caja3.start();
+		Caja1 caja4= new Caja1(ingreso.getCola());	 
+		caja4.start();
+		;
 		boolean ciclo=false;
 		do {			
 			System.out.println("\tBanorte "+"\n"+"Escoge una opcion:"+"\n"+"1)Estatus del Banco"+"\n"+"2)Salir");
@@ -21,7 +30,12 @@ public class BancoBanorte {
 					switch(Integer.parseInt(opcion))
 					{
 						case 1:
-							System.out.println(informacioBanco());
+							System.out.println("\tFila de Banco:\n");
+							System.out.println(ingreso.getCola().toString());
+							System.out.println(caja1.informacionCaja());
+							System.out.println(caja2.informacionCaja());
+							System.out.println(caja3.informacionCaja());
+							System.out.println(caja4.informacionCaja());
 							ciclo=true;
 							break;
 						case 2:

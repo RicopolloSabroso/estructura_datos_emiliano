@@ -20,15 +20,15 @@ public class Caja1 extends Thread{
 				//	System.out.println(persona.getCuenta());
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
-						System.out.println("ho");
+					//	System.out.println("ho");
 					}else {
 						cajaVacia();
-						System.out.println("o");
+					//	System.out.println("o");
 						persona.setCartera(retiro(persona.getMonto()));						
 					}
 				}
-				sleep((int)(1+Math.random()*10000));
-				System.out.print(informacionCaja());
+				sleep((int)(1+Math.random()*100000));
+				//System.out.print(informacionCaja());
 			}catch(InterruptedException e) {}
 			estado=false;
 		}
