@@ -1,7 +1,7 @@
 package estructura.cola;
 
 import estructura.nodo.BooleanNodo;
-
+import estructura.tareas.hilo.*;
 public class BooleanPriorityQueue {
 	private int size;
 	private BooleanNodo front;
@@ -77,9 +77,12 @@ public class BooleanPriorityQueue {
 	public String toString() {
 		BooleanNodo temp=front;
 		String s="";
-		while(null!=temp) {
-			s=temp.getDato()+"->"+s;
+		int i=0;
+		int tam=size;
+		while(null!=temp&& i<tam) {
+			s=(((Persona)temp.getDato()).getCuenta())+"->"+s;
 			temp=temp.getEnlace();
+			i++;
 		}
 		return s;
 	}
