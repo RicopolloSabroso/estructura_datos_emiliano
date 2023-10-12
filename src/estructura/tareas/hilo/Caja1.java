@@ -11,35 +11,37 @@ public class Caja1 extends Thread{
 		this.ingresos=cola;
 	}
 	public void run() {
+		while(true) {
 			try {
 				//System.out.println("hola");
-				sleep((int)(1+Math.random()*10000));
 				if(!ingresos.isEmpty()) {
-					System.out.println("o");
 					this.estado=true;	
 					this.persona=(Persona)ingresos.dequeue();
-					System.out.println(persona.getCuenta());
-					sleep((int)(1+Math.random()*100000));
+				//	System.out.println(persona.getCuenta());
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
 						System.out.println("ho");
 					}else {
 						cajaVacia();
-						System.out.println(cajaExpendedora.getBillete200());
-						persona.setCartera(retiro(persona.getMonto()));
+						System.out.println("o");
+						persona.setCartera(retiro(persona.getMonto()));						
 					}
 				}
+				sleep((int)(1+Math.random()*10000));
+				System.out.print(informacionCaja());
 			}catch(InterruptedException e) {}
 			estado=false;
 		}
+			
+		}
 	public Billete getCajaExpendedora() {
-		return cajaExpendedora;
+		return this.cajaExpendedora;
 	}
 	public Persona getPersona() {
-		return persona;
+		return this.persona;
 	}
 	public boolean getEstado() {
-		return estado;
+		return this.estado;
 	}
 	public void deposito(LinkedStack cartera) {
 		int aux;
@@ -175,6 +177,19 @@ public class Caja1 extends Thread{
 				cajaExpendedora.getBillete1000().push(1000);
 			}
 		}
+	}
+	public String informacionCaja() {
+		String s="\tCaja "+"\n"+"Cuenta\t|Accion\t|Monto\n";
+		if(this.estado) {
+			s+=persona.getCuenta()+"\t|"+ String.valueOf(persona.getTarea()==0?"deposito":"retiro")+"\t|"+"$"+persona.getMonto()+"\n";
+		}else {
+			s+= "Caja Vacia\n";
+		}
+		s+="Dinero caja: \n"+"$1:"+cajaExpendedora.getMoneda1().size()+"\t"+"$5:"+cajaExpendedora.getMoneda5().size()+"\t"+"$10:"+cajaExpendedora.getMoneda10().size()
+				+"\t"+"$10:"+cajaExpendedora.getMoneda10().size()+"\t"+"$20:"+cajaExpendedora.getBillete20().size()+"\t"+"$50:"+cajaExpendedora.getBillete50().size()
+				+"\t"+"$100:"+cajaExpendedora.getBillete100().size()+"\t"+"$200:"+cajaExpendedora.getBillete200().size()+"\t"+"$500:"+cajaExpendedora.getBillete500().size()
+				+"\t"+"$1000:"+cajaExpendedora.getBillete1000().size()+"\n";
+		return s;
 	}
 }
 
