@@ -14,17 +14,19 @@ public class Caja1 extends Thread{
 		while(true) {
 			try {
 				//System.out.println("hola");
-				if(!ingresos.isEmpty()) {
+				if(ingresos.size()>0) {
 					this.estado=true;	
 					this.persona=(Persona)ingresos.dequeue();
 				//	System.out.println(persona.getCuenta());
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
 					//	System.out.println("ho");
+						sleep((int)(1+Math.random()*100000));
 					}else {
 						cajaVacia();
 					//	System.out.println("o");
-						persona.setCartera(retiro(persona.getMonto()));						
+						persona.setCartera(retiro(persona.getMonto()));		
+						sleep((int)(1+Math.random()*100000));
 					}
 				}
 				sleep((int)(1+Math.random()*10000));
@@ -33,7 +35,7 @@ public class Caja1 extends Thread{
 			estado=false;
 		}
 			
-		}
+	}
 	public Billete getCajaExpendedora() {
 		return this.cajaExpendedora;
 	}

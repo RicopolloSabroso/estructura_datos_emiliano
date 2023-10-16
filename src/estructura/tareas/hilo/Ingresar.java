@@ -13,7 +13,7 @@ public class Ingresar extends Thread {
 				boolean prioridad= (int)(Math.random()+.5)==0?true:false;
 				cola.enqueue(new Persona(String.valueOf((long) (random.nextDouble() * 900000000000L) + 100000000000L), (int)(Math.random()+.5),prioridad), prioridad);
 			//	System.out.println(((Persona)cola.rear()).getCuenta());
-				sleep((int)(1+Math.random()*10000));
+				sleep((int)(1+Math.random()*9999));
 				
 			}catch(InterruptedException e) {}
 		}

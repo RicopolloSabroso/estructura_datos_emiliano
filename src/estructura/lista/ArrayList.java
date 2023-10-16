@@ -38,14 +38,27 @@ public class ArrayList {
 		list[nIndex]=value;
 		size++;
 	}
-	public void set(Integer index, Object value) {
-		return null!=front?front.getDato():null;
+	public void set(Integer index, Object value) throws Exception{
+		if(index<0|| index>=size) {
+			throw new Exception("Fuera de rango");
+		}
+		list[index]=value;
 	}
 	public Object get(Integer index) {
-		return null!=rear?rear.getDato():null;
+		try {
+			return list[index];
+		}catch(Exception e) {
+			throw e;
+		}
 	}
 	public Object remove(Integer index) {
-		return null!=front?front.getDato():null;
+		Object value=list[index];
+		for(int i=index;i> size-1;i++) {
+			list[index]=list[index+1];
+		}
+		list[size-1]=null;
+		size--;
+		return value;
 	}
 	private void incrementaArray() {
 		Object[] aux= new Object[list.length+increment];
@@ -55,12 +68,10 @@ public class ArrayList {
 		list=aux;
 	}
 	public String toString() {
-		NumericNodo temp=front;
-		String s="";
-		while(null!=temp) {
-			s=temp.getDato()+"->"+s;
-			temp=temp.getEnlace();
+		StringBuilder s=new StringBuilder();
+		for (int i=0; i<size; i++) {
+			s.append(list[i]).append("->");
 		}
-		return s;
+		return s.toString();
 	}
 }
