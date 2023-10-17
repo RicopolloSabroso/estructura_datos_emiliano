@@ -21,13 +21,12 @@ public class Caja1 extends Thread{
 					if(persona.getTarea()==0) {
 						deposito(persona.getCartera());
 					//	System.out.println("ho");
-						sleep((int)(1+Math.random()*100000));
 					}else {
 						cajaVacia();
 					//	System.out.println("o");
-						persona.setCartera(retiro(persona.getMonto()));		
-						sleep((int)(1+Math.random()*100000));
+						persona.setCartera(retiro(persona.getMonto()));			
 					}
+					sleep((int)(1+Math.random()*100000));
 				}
 				sleep((int)(1+Math.random()*100));
 				//System.out.print(informacionCaja());
