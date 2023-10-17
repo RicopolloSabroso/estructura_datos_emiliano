@@ -29,7 +29,7 @@ public class Caja1 extends Thread{
 						sleep((int)(1+Math.random()*100000));
 					}
 				}
-				sleep((int)(1+Math.random()*10000));
+				sleep((int)(1+Math.random()*100));
 				//System.out.print(informacionCaja());
 			}catch(InterruptedException e) {}
 			estado=false;
