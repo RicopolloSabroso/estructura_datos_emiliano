@@ -14,16 +14,15 @@ public class Persona {
 		this.prioridad=prioridad;
 		int total=(int)(Math.random()*9000);
 		if(tarea==0){
-			int[] cambio = {1,5,10,20,50,100,200,500};
+			int[] cambio = {1,5,10,20,50,100,200,500,1000};
 			int dinero=0;
 			do {
-				int aleatorio=cambio[(int)(Math.random()*7)];
+				int aleatorio=cambio[(int)(Math.random()*8)];
 				if(dinero+aleatorio<=total) {
 					cartera.push(aleatorio);
 		            dinero=dinero+aleatorio;
 				}
 	        }while(dinero<total);
-			this.monto=dinero;
 		}
 		this.monto=total;
 	}

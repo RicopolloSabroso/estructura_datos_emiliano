@@ -102,9 +102,9 @@ public class Caja1 extends Thread{
 	public LinkedStack retiro(int monto) {
 		LinkedStack cartera=new LinkedStack();
 		int dinero=0;
-		int[] cambio = {1,5,10,20,50,100,200,500};
+		int[] cambio = {1,5,10,20,50,100,200,500,1000};
 		do {
-			int aleatorio=cambio[(int)(Math.random()*7)];
+			int aleatorio=cambio[(int)(Math.random()*8)];
 			if(dinero+aleatorio<=monto) {
 				switch (aleatorio) {
 				case 1:
