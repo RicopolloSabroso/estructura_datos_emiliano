@@ -52,5 +52,23 @@ public class Ordenamiento {
             quickSort(lista, i, mayor);
         }
     }
-
+    public static void shellsort(ArrayList lista) throws Exception {
+        int incremento = lista.size() / 2;
+        while (incremento > 0) {
+            for (int i = incremento; i < lista.size(); i++) {
+                int j = i;
+                int temporal = (int)lista.get(i);
+                while (j >= incremento && (int)lista.get(j - incremento) > temporal) {
+                    lista.set(j, lista.get(j - incremento));
+                    j = j - incremento;
+                }
+                lista.set(j, temporal);
+            }
+            if (incremento == 2) {
+                incremento = 1;
+            } else {
+                incremento = (int) (incremento / 2.2);
+            }
+        }
+    }
 }
