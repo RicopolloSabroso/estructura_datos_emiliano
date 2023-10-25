@@ -5,27 +5,25 @@ import java.util.Scanner;
 import estructura.lista.ArrayList;
 
 public class Ordenamiento {
-    public static void main(String[] args) throws Exception{
-        Scanner leer = new Scanner(System.in);
-        String cantidad;
-        int cantidadNumero,num;
-        
-        System.out.print("cantidad de numeros aleatorios: ");
-        cantidad = leer.nextLine();
+	public static void main(String[] args) throws Exception{
+		Scanner leer = new Scanner(System.in);
+		String cantidad;
 
-        if (Integer.parseInt(cantidad) > 1 && Integer.parseInt(cantidad) <= 100) {
-            ArrayList arregloEnteros = new ArrayList();
-            for (int i = 0; i < Integer.parseInt(cantidad); i++) {
-                num= 1+(int)(Math.random()*100);
-                arregloEnteros.add(1+(int)(Math.random()*100));
-            }
-            System.out.println("Los números aleatorios son: \n"+arregloEnteros);
-            quickSort(arregloEnteros,0,arregloEnteros.size()-1);
-            System.out.println(arregloEnteros);
-        }
+		System.out.print("cantidad de numeros aleatorios: ");
+		cantidad = leer.nextLine();
+		ArrayList arregloEnteros = new ArrayList();
+		for (int i = 0; i < Integer.parseInt(cantidad); i++) {
+			arregloEnteros.add(1+(int)(Math.random()*100));
+		}
+		System.out.println("Los números aleatorios son: \n"+arregloEnteros);
+		quickSort(arregloEnteros,0,arregloEnteros.size()-1);
+		//shellSort(arregloEnteros);
+		//seleccion(arregloEnteros);
+		System.out.println(arregloEnteros);
+	}
         
         
-    }
+
     public static void quickSort(ArrayList lista, int menor, int mayor)throws Exception {       
         int i = menor;
         int j = mayor;
@@ -52,7 +50,7 @@ public class Ordenamiento {
             quickSort(lista, i, mayor);
         }
     }
-    public static void shellsort(ArrayList lista) throws Exception {
+    public static void shellSort(ArrayList lista) throws Exception {
         int incremento = lista.size() / 2;
         while (incremento > 0) {
             for (int i = incremento; i < lista.size(); i++) {
@@ -70,5 +68,19 @@ public class Ordenamiento {
                 incremento = (int) (incremento / 2.2);
             }
         }
+    }
+    public static void seleccion(ArrayList lista) throws Exception{
+    	 for (int llenarRanura = lista.size() - 1; llenarRanura > 0; llenarRanura--) {
+             int posicionDelMayor = 0;
+             for (int ubicacion = 1; ubicacion <= llenarRanura; ubicacion++) {
+                 if ((int)lista.get(ubicacion) > (int)lista.get(posicionDelMayor)) {
+                     posicionDelMayor = ubicacion;
+                 }
+             }
+
+             int temp = (int)lista.get(llenarRanura);
+             lista.set(llenarRanura, lista.get(posicionDelMayor));
+             lista.set(posicionDelMayor, temp);
+         }
     }
 }
