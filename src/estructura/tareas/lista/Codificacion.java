@@ -14,7 +14,22 @@ public class Codificacion {
 		// TODO Auto-generated method stub
 		Scanner leer = new Scanner(System.in);
 		LinkedList lista= new LinkedList();
-		String palabra=leer.nextLine();
+		String num;
+		//MCD
+		
+//		System.out.println("ponga los numeros que desee para calcular el mcd \n Presione el -1 si ya no quiere ingresar nada");
+//		do {
+//			num=leer.nextLine();
+//			if(Integer.parseInt(num)!=-1) {
+//				lista.add(Integer.parseInt(num));
+//			}	
+//		}while(Integer.parseInt(num)!=-1);
+//		if(!lista.isEmpty()) {
+//			System.out.println(lista);
+//			System.out.println( "MCD: " +McdPorPrimos( lista));
+//		}	
+		
+		//String palabra=leer.nextLine();
 //		XOR
         //System.out.println(xor(lista, palabra));
 		
@@ -23,10 +38,25 @@ public class Codificacion {
 		//System.out.println(separacion);
 		//System.out.println(polibio(lista,palabra));
 		
-//		ESte es del ADFGVX
+//		Este es del ADFGVX
 		//System.out.println(ADFGVX( lista, palabra));
 
 	}
+	
+    public static int McdPorPrimos(LinkedList numeros) throws Exception{
+        int resultado = (int)numeros.get(0);
+        for (int i = 1; i < numeros.size(); i++) {
+            resultado = MCD(resultado,(int) numeros.get(i));
+        }
+        return resultado;
+    }
+    public static int MCD(int num, int num2) {
+        if (num2 == 0) {
+            return num;
+        } else {
+            return MCD(num2, num % num2);
+        }
+    }
 	public static void convertirBinario(LinkedList arreglo,String palabra) {
 		for (int i = 0; i < palabra.length(); i++) {
 			 int letra = (int) palabra.charAt(i);
@@ -99,14 +129,8 @@ public class Codificacion {
 				k++;
 			}
 		} 
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz[0].length; j++) {
-				System.out.print(matriz[i][j]+" ");
-			}
-			System.out.println();
-		} 
+		 imprimirAr( matriz);
 		palabra=palabra.replaceAll(" ", "");
-		System.out.println(palabra);
 		for (int x = 0; x < palabra.length(); x++) {
 			for (int i = 1; i < matriz.length; i++) {
 				 for (int j = 1; j < matriz[0].length; j++) {
@@ -134,6 +158,15 @@ public class Codificacion {
 	        }
 	    }
 	    return abecedario;
+      
+  }
+	public static void imprimirAr(String[][] matriz) throws Exception{
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[0].length; j++) {
+				System.out.print(matriz[i][j]+" ");
+			}
+			System.out.println();
+		} 
       
   }
 
