@@ -88,26 +88,26 @@ public class LinkedList {
 	} 
 
 	private Object removeFirst() {
-		Object value=null;
-		Nodo actual=apuntador;
-		while(null!= actual.getEnlace()) {
-			actual=actual.getEnlace();
+		Nodo temp=apuntador;
+		Object value;
+		int tempSize=size-1;
+		while(null!=temp.getEnlace() && tempSize>1) {
+			temp=temp.getEnlace();
+			tempSize--;
 		}
-		value=actual.getDato();
+		value=temp.getEnlace().getDato();
+		temp.setEnlace(null);
 		size--;
 		return value;
 	}
+	
 	private Object removeLast() {
 		Object value=null;
-		int tam=size;
-		Nodo actual=apuntador;
-		while(null!= actual.getEnlace()&& tam>1) {
-			actual=actual.getEnlace();
-			tam--;
+		if(null!=apuntador) {
+			value=apuntador.getDato();
+			this.apuntador=apuntador.getEnlace();
+			size--;
 		}
-		value=actual.getEnlace().getDato();
-		actual.setEnlace(null);
-		size--;
 		return value;
 	}
 	private Object removeMiddle(int index) {

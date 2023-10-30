@@ -29,9 +29,9 @@ public class Codificacion {
 //			System.out.println( "MCD: " +McdPorPrimos( lista));
 //		}	
 		
-		//String palabra=leer.nextLine();
+		String palabra=leer.nextLine();
 //		XOR
-        //System.out.println(xor(lista, palabra));
+        System.out.println("palabra codificada:\n"+xor(lista, palabra));
 		
 //		ESte es del polibio
 		//LinkedList separacion= pasarALista(palabra);
@@ -60,7 +60,7 @@ public class Codificacion {
 	public static void convertirBinario(LinkedList arreglo,String palabra) {
 		for (int i = 0; i < palabra.length(); i++) {
 			 int letra = (int) palabra.charAt(i);
-			arreglo.add(String.format("%8s", Integer.toBinaryString(letra)).replace(' ', '0'));
+			arreglo.add((String.format("%8s", Integer.toBinaryString(letra))).replace(' ', '0'));
 		}    
     }
 	public static LinkedList pasarALista(String palabra) {
@@ -72,7 +72,7 @@ public class Codificacion {
     }
 	public static LinkedList xor(LinkedList arreglo,String palabra) throws Exception{
 		convertirBinario(arreglo,palabra);
-		 System.out.println(arreglo);
+		System.out.println("palabra:\n"+arreglo);
 		String code="11110011";	
 		LinkedList resultado= new LinkedList();
 		 for (int i = 0; i < arreglo.size(); i++) {
@@ -86,6 +86,108 @@ public class Codificacion {
 		      }
 			 resultado.add(codif);
 	      }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
         return resultado;
     }
 	public static LinkedList polibio(LinkedList arreglo,String palabra) throws Exception{
