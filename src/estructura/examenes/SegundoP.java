@@ -14,15 +14,15 @@ public class SegundoP {
 		LinkedList lista= new LinkedList();
 		LinkedQueue colaConsonantes=new LinkedQueue();
 		LinkedQueue colaVocales=new LinkedQueue();
-		vocalOConsonante(colaVocales,colaConsonantes);
-		System.out.println(colaVocales);
-		System.out.println(colaConsonantes);
-		System.out.println("vocales");
-		contar(colaVocales);
-		System.out.println("consonantes ");
-		contar( colaConsonantes);
+//		vocalOConsonante(colaVocales,colaConsonantes);
+//		System.out.println(colaVocales);
+//		System.out.println(colaConsonantes);
+//		System.out.println("vocales");
+//		contar(colaVocales);
+//		System.out.println("consonantes ");
+//		contar( colaConsonantes);
 //		Ejercicio 2
-//		System.out.print(noRepetidos());
+//		terceraPregunta();
 //			Ejercicio 3
 //		lista=generarListaNumeros();
 //	    System.out.println("Media: " + media(lista));
@@ -48,7 +48,7 @@ public class SegundoP {
 
 	public static void contar(LinkedQueue cola) {
         int[] frecuencia = new int[256];
-        // esto es para ver las veces que se repiten
+        // esto es para ver las veces que se repiten profe
         while (!cola.isEmpty()) {
             char letra = (char) cola.dequeue(); 
             frecuencia[letra]++;
@@ -63,38 +63,28 @@ public class SegundoP {
 	    char letra = Character.toLowerCase(letraP);
 	    return letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u';
 	}
-	public static LinkedList noRepetidos() throws Exception {
-        
-		LinkedQueue numeros = new LinkedQueue();
-        Random random = new Random();
-		for (int i = 0; i <50; i++) {
-            numeros.enqueue(random.nextInt(50) + 1);
+	public static void terceraPregunta() { 
+		CircularQueue colas= new CircularQueue(50);
+		int ar[]=new int[50];
+		int rep[]=new int[50];
+		int numero;
+		while(colas.size()<50) {
+			numero=(1+(int)(Math.random()*50));
+			colas.enqueue(numero);
 		}
-		System.out.println(numeros ); 
-		LinkedList listaNumeros = new LinkedList();
-        LinkedList repetidos = new LinkedList();
-
-        while (!numeros.isEmpty()) {
-            int numero = (int) numeros.dequeue();
-
-            if (!contieneNum(listaNumeros, numero) && !contieneNum(repetidos, numero)) {
-                listaNumeros.add(numero);
-            } else {
-                repetidos.add(numero);
+		 while (!colas.isEmpty()) {
+	            numero = (int)colas.dequeue();
+	            rep[numero-1]=rep[numero-1]+1;
+	        }
+		for(int i=0;i<rep.length;i++) {
+			if (rep[i] == 1) {
+                ar[i]=i;
+                System.out.println(i+1);
             }
-        }
-    	System.out.println(listaNumeros.size() ); 
-        return listaNumeros;
-    }
-
-    private static boolean contieneNum(LinkedList lista, int numero) throws Exception {
-        for (int i = 0; i < lista.size(); i++) {
-            if ((int)lista.get(i) == numero) {
-                return true;
-            }
-        }
-        return false;
-    }
+					
+		}
+		
+	}
 	public static LinkedList generarListaNumeros() {
 		LinkedList listaNumeros = new LinkedList();
         Random random = new Random();
