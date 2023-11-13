@@ -22,12 +22,12 @@ public class SegundoP {
 //		System.out.println("consonantes ");
 //		contar( colaConsonantes);
 //		Ejercicio 2
-	terceraPregunta();
+//   	segundaPregunta();
 //			Ejercicio 3
 //		lista=generarListaNumeros();
-//	    System.out.println("Media: " + media(lista));
-//	    System.out.println("Moda: " + moda(lista));
-//	    System.out.println("Mediana: " + mediana(lista);
+	    System.out.println("Media: " + media(lista));
+	    System.out.println("Moda: " + moda(lista));
+	    System.out.println("Mediana: " + mediana(lista));
 //		ejercicio 4
 //		cuartaPregunta();
 	}
@@ -63,7 +63,7 @@ public class SegundoP {
 	    char letra = Character.toLowerCase(letraP);
 	    return letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u';
 	}
-	public static void terceraPregunta() { 
+	public static void segundaPregunta() { 
 		CircularQueue colas= new CircularQueue(50);
 		int ar[]=new int[50];
 		int rep[]=new int[50];
