@@ -22,7 +22,7 @@ public class SegundoP {
 //		System.out.println("consonantes ");
 //		contar( colaConsonantes);
 //		Ejercicio 2
-//		terceraPregunta();
+	terceraPregunta();
 //			Ejercicio 3
 //		lista=generarListaNumeros();
 //	    System.out.println("Media: " + media(lista));
