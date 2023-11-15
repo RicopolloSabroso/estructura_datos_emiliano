@@ -37,6 +37,7 @@ public class Tablero {
 			barcos=jugador1.getBarcos();
 			resultado=jugador1;
 		}
-		int fila=
+		int fila=0;
+		return resultado;
 	}
 }

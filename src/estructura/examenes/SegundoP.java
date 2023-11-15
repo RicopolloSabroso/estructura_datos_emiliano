@@ -125,7 +125,6 @@ public class SegundoP {
     }
 	public static double mediana(LinkedList numeros)throws Exception  {
         shellSort(numeros);
-
         int n = numeros.size();
         if (n % 2 == 0) {
             int mediana1 =(int) numeros.get(n / 2 - 1);
