@@ -1,32 +1,23 @@
 package proyecto;
 
 import estructura.lista.DoubleLinkedList;
+import estructura.lista.LinkedList;
 
 public class Tablero {
 	private Jugador jugador1;
 	private Jugador jugador2;
-	private DoubleLinkedList[] disparos1= new DoubleLinkedList[10];
-	private DoubleLinkedList[] disparos2= new DoubleLinkedList[10];
+	private int[][] disparos1= new int[10][10];
+	private int[][] disparos2= new int[10][10];
 	public Tablero(Jugador jugador1, Jugador jugador2){
 		this.jugador1=jugador1;	
-		for(int i=0; i<10;i++) {
-			for(int j=0; j<10;j++) {
-				disparos1[i].add(0);
-			}
-		}
 		this.jugador2  =jugador2;
-		for(int i=0; i<10;i++) {
-			for(int j=0; j<10;j++) {
-				disparos2[i].add(0);
-			}
-		}
 	}
 	public void meterBarco(Jugador jugador, Barco barco) {
 		jugador.getBarcos().add(barco);
 	}
-	public Jugador disparar(Jugador jugador, String posicion) {
-		DoubleLinkedList[] temp= null;
-		DoubleLinkedList barcos=null;
+	public Jugador disparar(Jugador jugador, String posicion)throws Exception {
+		int[][] temp= null;
+		LinkedList barcos=null;
 		Jugador resultado=null;
 		if(jugador.getNombre().equals("jugador1")) {
 			temp=disparos2;
@@ -37,7 +28,36 @@ public class Tablero {
 			barcos=jugador1.getBarcos();
 			resultado=jugador1;
 		}
-		int fila=0;
+		temp[Jugada.filaIndex(posicion)][Jugada.columnaEntera(posicion)]=1;
+		for(int i=0;i<barcos.size()-1;i++) {
+			Barco barco=(Barco)barcos.get(i);
+			for(int j=0;j<barco.getPosiciones().length;j++) {
+				int fila=Jugada.filaIndex(barco.getPosiciones()[j]);
+				int columna=Jugada.columnaEntera(barco.getPosiciones()[j]);
+				if(fila==Jugada.filaIndex(posicion)&& columna==Jugada.columnaEntera(posicion)) {
+					temp[fila][columna]=2;
+					resultado=jugador;
+				}
+			}
+		}
 		return resultado;
+	}
+	public void mostrarTableroJ1() {
+		System.out.println("Disparos de Jugador1 a Jugador2");
+		for(int i=0;i<disparos1.length;i++) {
+			for(int j=0;j<disparos1[i].length;j++) {
+				System.out.print(disparos1[i][j]+" ");
+			}
+			System.out.println();
+		}
+	}
+	public void mostrarTableroJ2() {
+		System.out.println("Disparos de Jugador1 a Jugador2");
+		for(int i=0;i<disparos2.length;i++) {
+			for(int j=0;j<disparos2[i].length;j++) {
+				System.out.print(disparos2[i][j]+" ");
+			}
+			System.out.println();
+		}
 	}
 }

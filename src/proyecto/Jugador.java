@@ -1,10 +1,12 @@
 package proyecto;
 
+
 import estructura.lista.DoubleLinkedList;
+import estructura.lista.LinkedList;
 
 public class Jugador {
 	private String nombre;
-	private DoubleLinkedList barcos=new DoubleLinkedList();
+	private LinkedList barcos=new LinkedList();
 	public Jugador(String nombre) {
 		this.nombre=nombre;
 	}
@@ -14,7 +16,7 @@ public class Jugador {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public DoubleLinkedList getBarcos() {
+	public LinkedList getBarcos() {
 		return barcos;
 	}
 }
