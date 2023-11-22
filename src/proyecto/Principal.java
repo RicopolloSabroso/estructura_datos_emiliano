@@ -28,9 +28,19 @@ public class Principal {
 		//turnos jugador inicial
 		resultado=jugador1;
 		resultado=tablero.disparar(resultado,"A1");
+		tablero.mostrarTableroDisparosJ1();
+		resultado=tablero.disparar(resultado,"B1");
+		resultado=tablero.disparar(resultado,"C1");
+		tablero.mostrarTableroDisparosJ1();
+		resultado=tablero.disparar(resultado,"D1");
+		resultado=tablero.disparar(resultado,"C4");
 		System.out.println(resultado.getNombre());
-		tablero.mostrarTableroJ1();
-		tablero.mostrarTableroJ2();
+		tablero.mostrarTableroDisparosJ1();
+		//tablero.mostrarTableroJ2();
+		resultado=tablero.disparar(resultado,"J3");
+		System.out.println(resultado.getNombre());
+		tablero.mostrarTableroDisparosJ1();
+		
 	}
 
 }

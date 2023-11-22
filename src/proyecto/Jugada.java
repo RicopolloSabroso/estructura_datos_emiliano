@@ -49,37 +49,37 @@ public class Jugada {
 		return colum;
 	}
 	public static int columnaEntera(String posicion ) {
-		String lugar=posicion.substring(0,posicion.length());
+		char lugar=posicion.charAt(0);
 		int colum=0;
-		switch(lugar.toUpperCase()) {
-			case "A":
+		switch(lugar) {
+			case 'A':
 				colum=0;
 				break;
-			case "B":
+			case 'B':
 				colum=1;
 				break;
-			case "C":
+			case 'C':
 				colum=2;
 				break;
-			case "D":
+			case 'D':
 				colum=3;
 				break;
-			case "E":
+			case 'E':
 				colum=4;
 				break;
-			case "F":
+			case 'F':
 				colum=5;
 				break;
-			case "G":
+			case 'G':
 				colum=6;
 				break;
-			case "H":
+			case 'H':
 				colum=7;
 				break;
-			case "I":
+			case 'I':
 				colum=8;
 				break;
-			case "J":
+			case 'J':
 				colum=9;
 				break;
 		}

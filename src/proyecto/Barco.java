@@ -18,4 +18,21 @@ public class Barco {
 	public void setPosiciones(String[] posiciones) {
 		this.posiciones = posiciones;
 	}
+	 public void recibirImpacto(String posicion) {
+	        for (int i = 0; i < posiciones.length; i++) {
+	            if (posiciones[i].equals(posicion)) {
+	                bajas[i] = true;
+	                break;
+	            }
+	        }
+	    }
+
+	   public boolean estaHundido() {
+	       for (boolean baja : bajas) {
+	           if (!baja) {
+	               return false;
+            }
+	      }
+	       return true;
+	   }
 }
