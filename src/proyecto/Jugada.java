@@ -1,7 +1,23 @@
 package proyecto;
 
 public class Jugada {
-	public static int filaIndex(String posicion) {
+	public boolean esPosicionValida(String posicion) {
+        if (posicion.length() < 2 || posicion.length() > 3) {
+            return false;
+        }
+
+        char letra = posicion.charAt(0);
+        int numero;
+
+        try {
+            numero = Integer.parseInt(posicion.substring(1));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        return letra >= 'A' && letra <= 'J' && numero >= 1 && numero <= 10;
+    }
+	public int filaIndex(String posicion) {
 		String lugar=posicion.substring(1,posicion.length());
 		int fila=0;
 		if(validar(lugar)) {
@@ -9,10 +25,10 @@ public class Jugada {
 		}
 		return fila-1;
 	}
-	public static int fila(int fila) {
+	public int fila(int fila) {
 		return fila+1;
 	}
-	public static String columnaLetra(int columna ) {
+	public String columnaLetra(int columna ) {
 		String colum="";
 		switch(columna) {
 			case 0:
@@ -48,7 +64,7 @@ public class Jugada {
 		}
 		return colum;
 	}
-	public static int columnaEntera(String posicion ) {
+	public int columnaEntera(String posicion ) {
 		char lugar=posicion.charAt(0);
 		int colum=0;
 		switch(lugar) {
@@ -85,7 +101,7 @@ public class Jugada {
 		}
 		return colum;
 	}
-	public static boolean validar(String x){
+	public boolean validar(String x){
 		boolean resultado=false;
 		try {
 			if(Integer.parseInt(x)>0&&Integer.parseInt(x)<11) {
@@ -95,4 +111,6 @@ public class Jugada {
 		}
 		return resultado;
 	}
+	
+	
 }
