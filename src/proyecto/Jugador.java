@@ -30,32 +30,39 @@ public class Jugador {
 	        Scanner leer = new Scanner(System.in);
 	        for (int i = 0; i < tam.length; i++) {
 	        	mostrarTableroBarcos(); 
-	            System.out.println("Posiciona el barco " + (i + 1) + " (ejemplo: A1, B2): ");
+	        	System.out.println("Posiciona el barco " + (i + 1) + " (ejemplo: A1, B2): ");
 	            String posicion = leer.nextLine().toUpperCase();
-	            while (!jugada.esPosicionValida(posicion) || posicionOcupada(posicion)) {
-	                System.out.println("Posición inválida o ocupada. Porfavor vuelve a intentarlo ");
+	            while (!jugada.esPosicionValida(posicion) ||(barcoOcupado(posicion,tam[i],Barco.Ubicacion.horizontal)&&barcoOcupado(posicion,tam[i],Barco.Ubicacion.vertical))) {
+	                System.out.println("Posición inválida u ocupada. Porfavor vuelve a intentarlo ");
 	                posicion = leer.nextLine().toUpperCase();
 	            }
+	        	if(i==7||i==8) {
+	        		Barco barco = new Barco(posicion, Barco.Ubicacion.valueOf("vertical"),tam[i]);
+	 	            this.barcos.add(barco);
+	        	}
 	            System.out.println("Elige la orientación del barco (Horizontal o Vertical): ");
 	            String orientacion = leer.nextLine().toLowerCase();
-	            while (!orientacionValida(orientacion)) {
-	                System.out.println("orientacion inválida . Porfavor vuelve a intentarlo ");
+	            while (!orientacionValida(orientacion)|| !jugada.fueraDeRango(posicion, tam[i], Barco.Ubicacion.valueOf(orientacion))||barcoOcupado(posicion,tam[i],Barco.Ubicacion.valueOf(orientacion))) {
+	                System.out.println("orientacion inválida o el barco se pasa de rango . Porfavor vuelve a intentarlo ");
 	                orientacion = leer.nextLine().toLowerCase();
 	            }
-	            	Barco barco = new Barco(posicion, Barco.Ubicacion.valueOf(orientacion),tam[i]);
-	 	            this.barcos.add(barco);  
+	            Barco barco = new Barco(posicion, Barco.Ubicacion.valueOf(orientacion),tam[i]);
+ 	            this.barcos.add(barco);  
 	        }
 	    }
-	    private boolean posicionOcupada(String posicion) throws Exception{
-	        for (int i = 0; i < barcos.size(); i++) {
-	            Barco barco = (Barco)barcos.get(i);
+
+	    private boolean barcoOcupado(String posicion, int tam, Ubicacion ubicacion) throws Exception{
+	    	String[] lugar=jugada.posicionarBarcoPrueba(posicion,ubicacion, tam);
+	    	for (int i = 0; i < this.barcos.size(); i++) {
+	            Barco barco = (Barco)this.barcos.get(i);
 	            if (barco != null) {
-	                String[] posiciones = barco.getPosiciones();
-	                for (int j = 0; j < posiciones.length; j++) {
-	                    if (posiciones[j].equals(posicion)) {
-	                        return true;
-	                    }
-	                }
+	            	for (String pos : barco.getPosiciones()) {
+		                for (String nuevaPos : lugar) {
+		                    if (pos.equalsIgnoreCase(nuevaPos)) {
+		                        return true; 
+		                    }
+		                }
+		            }
 	            }
 	        }
 	        return false;

@@ -34,6 +34,7 @@ public class Barco {
             }
         }
     }
+	
 	 public Ubicacion getUbicacion() {
 		return ubicacion;
 	}

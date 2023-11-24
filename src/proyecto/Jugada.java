@@ -1,5 +1,7 @@
 package proyecto;
 
+import proyecto.Barco.Ubicacion;
+
 public class Jugada {
 	public boolean esPosicionValida(String posicion) {
         if (posicion.length() < 2 || posicion.length() > 3) {
@@ -17,6 +19,11 @@ public class Jugada {
 
         return letra >= 'A' && letra <= 'J' && numero >= 1 && numero <= 10;
     }
+	public boolean fueraDeRango(String posicionInicial, int tam, Barco.Ubicacion ubicacion) {
+	    return (ubicacion == Barco.Ubicacion.horizontal && columnaEntera(posicionInicial) + tam <= 10) ||
+	           (ubicacion == Barco.Ubicacion.vertical && filaIndex(posicionInicial) + tam <= 10);
+	}
+	
 	public int filaIndex(String posicion) {
 		String lugar=posicion.substring(1,posicion.length());
 		int fila=0;
@@ -111,6 +118,19 @@ public class Jugada {
 		}
 		return resultado;
 	}
+	public String[] posicionarBarcoPrueba(String posicionInicial, Ubicacion ubicacion,int tam) {
+        String[] posiciones=new String[tam];
+		int fila =filaIndex(posicionInicial);
+        int columna = columnaEntera(posicionInicial);
+        for (int i = 0; i < posiciones.length; i++) {
+            if (ubicacion == Ubicacion.horizontal) {
+                posiciones[i] = columnaLetra(columna + i) +fila(fila);
+            } else {
+                posiciones[i] = columnaLetra(columna) + fila(fila + i);
+            }
+        }
+        return posiciones;
+    }
 	
 	
 }
