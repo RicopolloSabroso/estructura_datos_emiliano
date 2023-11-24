@@ -17,6 +17,7 @@ public class Tablero {
 		jugador.getBarcos().add(barco);
 	}
 	public Jugador disparar(Jugador jugador, String posicion)throws Exception {
+		mostrarTableroDisparosYBarcos(jugador);
 		int[][] temp= null;
 		LinkedList barcos=null;
 		Jugador resultado=null;
@@ -92,34 +93,21 @@ public class Tablero {
 	public void mostrarTableroBarcos(Jugador jugador) throws Exception{
 		int[][] disparos = (jugador.getNombre().equals("jugador1")) ? disparos1 : disparos2;
         LinkedList barcos = jugador.getBarcos();
-		System.out.println("Tablero y Barcos del " + jugador.getNombre());
-		System.out.print("  ");
-		for (int i = 0; i < disparos.length; i++) {
-			System.out.print(jugada.columnaLetra(i) + " ");
-		}
-		System.out.println();
-		for(int k=0;k<barcos.size();k++) {
-			for (int i = 0; i < disparos.length; i++) {
-				System.out.print(jugada.fila(i) + " ");
-				for (int j = 0; j < disparos[i].length; j++) {
-					Barco barco=(Barco)barcos.get(k);
-					for (String posicion : barco.getPosiciones()) {
-						char marca;
-						if(i==jugada.filaIndex(posicion)&& j==jugada.columnaEntera(posicion)) {
-							marca='B';
-						}else {
-							marca = (disparos[i][j] == 0) ? '0' : (disparos[i][j] == 1) ? 'X' : 'I';
-							//La X profe es para marcar donde le han disparado, la I es que fue impactado y la B es donde esta el barco intacto
-						}               
-						System.out.print(marca + " ");
-					}
-
-				}
-				System.out.println();
-			}
-		}
-		
+        int[][] barcosJ1 =jugador.getTablero();
+        System.out.println("Tablero del " + jugador.getNombre());
+        System.out.print("  ");
+        for (int i = 0; i < barcosJ1.length; i++) {
+            System.out.print(jugada.columnaLetra(i) + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < barcosJ1.length; i++) {
+            System.out.print(jugada.fila(i) + " ");
+            for (int j = 0; j < barcosJ1[i].length; j++) {
+                char marca = (barcosJ1[i][j] == 0) ? '0' : (barcosJ1[i][j] == 1) ? 'X' : (barcosJ1[i][j] == 2) ? 'I' : 'B';
+                System.out.print(marca + " ");
+            }
+            System.out.println();
+        }	
 	}
-	
-	
 }
+	

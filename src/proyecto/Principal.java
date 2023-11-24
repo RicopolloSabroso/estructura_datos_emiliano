@@ -28,18 +28,21 @@ public class Principal {
 		//tablero.meterBarco(jugador2, portaAvion2);
 		//turnos jugador inicial
 		resultado=jugador1;
+		System.out.println("turno: "+resultado.getNombre());
 		resultado=tablero.disparar(resultado,"A1");
 		tablero.mostrarTableroDisparosYBarcos(resultado);
+		System.out.println("turno: "+resultado.getNombre());
 		resultado=tablero.disparar(resultado,"B1");
+		System.out.println("turno: "+resultado.getNombre());
 		resultado=tablero.disparar(resultado,"C1");
-		tablero.mostrarTableroDisparosYBarcos(resultado);
+		System.out.println("turno: "+resultado.getNombre());
 		resultado=tablero.disparar(resultado,"D1");
+		System.out.println("turno: "+resultado.getNombre());
 		resultado=tablero.disparar(resultado,"C4");
-		System.out.println(resultado.getNombre());
-		tablero.mostrarTableroDisparosYBarcos(resultado);
+		System.out.println("turno: "+resultado.getNombre());
 		//tablero.mostrarTableroJ2();
 		resultado=tablero.disparar(resultado,"J3");
-		System.out.println(resultado.getNombre());
+		System.out.println("turno: "+resultado.getNombre());
 		tablero.mostrarTableroDisparosYBarcos(resultado);
 		
 	}

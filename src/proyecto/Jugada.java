@@ -7,10 +7,8 @@ public class Jugada {
         if (posicion.length() < 2 || posicion.length() > 3) {
             return false;
         }
-
         char letra = posicion.charAt(0);
         int numero;
-
         try {
             numero = Integer.parseInt(posicion.substring(1));
         } catch (NumberFormatException e) {
@@ -19,7 +17,7 @@ public class Jugada {
 
         return letra >= 'A' && letra <= 'J' && numero >= 1 && numero <= 10;
     }
-	public boolean fueraDeRango(String posicionInicial, int tam, Barco.Ubicacion ubicacion) {
+	public boolean entraEnRango(String posicionInicial, int tam, Barco.Ubicacion ubicacion) {
 	    return (ubicacion == Barco.Ubicacion.horizontal && columnaEntera(posicionInicial) + tam <= 10) ||
 	           (ubicacion == Barco.Ubicacion.vertical && filaIndex(posicionInicial) + tam <= 10);
 	}
