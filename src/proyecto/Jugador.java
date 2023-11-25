@@ -98,5 +98,17 @@ public class Jugador {
 		public boolean orientacionValida(String orientacion) {
 	        return orientacion.equalsIgnoreCase("vertical") || orientacion.equalsIgnoreCase("horizontal");
 	    }
-
+		public String coordenadaValida() {
+	        Scanner leer = new Scanner(System.in);
+			System.out.println("Escriba la coordenada que desee disparar ");
+            String coordenada = leer.nextLine().toUpperCase();
+            while (!jugada.esPosicionValida(coordenada)) {
+                System.out.println("Posición inválida. Porfavor vuelve a intentarlo ");
+                coordenada = leer.nextLine().toUpperCase();
+            }
+            return coordenada;
+		}
+		public void setTablero(int[][] tablero) {
+			this.tablero = tablero;
+		}
 }

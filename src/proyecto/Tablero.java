@@ -17,19 +17,22 @@ public class Tablero {
 		jugador.getBarcos().add(barco);
 	}
 	public Jugador disparar(Jugador jugador, String posicion)throws Exception {
-		mostrarTableroDisparosYBarcos(jugador);
 		int[][] temp= null;
+		int[][] tableroContrario= null;
 		LinkedList barcos=null;
 		Jugador resultado=null;
 		if(jugador.getNombre().equals("jugador1")) {
 			temp=disparos2;
 			barcos=jugador2.getBarcos();
 			resultado=jugador2;
+			tableroContrario=resultado.getTablero();
 		}else {
 			temp=disparos1;
 			barcos=jugador1.getBarcos();
 			resultado=jugador1;
+			tableroContrario=resultado.getTablero();
 		}
+		tableroContrario[jugada.filaIndex(posicion)][jugada.columnaEntera(posicion)]=1;
 		temp[jugada.filaIndex(posicion)][jugada.columnaEntera(posicion)]=1;
 		for(int i=0;i<barcos.size()-1;i++) {
 			Barco barco=(Barco)barcos.get(i);
@@ -38,6 +41,7 @@ public class Tablero {
 				int columna=jugada.columnaEntera(barco.getPosiciones()[j]);
 				if(fila==jugada.filaIndex(posicion)&& columna==jugada.columnaEntera(posicion)) {
 					temp[fila][columna]=2;
+					tableroContrario[fila][columna]=2;
 					resultado=jugador;
 					barco.impacto(posicion);
 					if (barco.estaHundido()) {
@@ -74,40 +78,49 @@ public class Tablero {
 	   
 	}
 	public void mostrarTableroDisparosYBarcos(Jugador jugador) throws Exception{
-        int[][] disparos = (jugador.getNombre().equals("jugador1")) ? disparos1 : disparos2;
-        System.out.println("Disparos del " + jugador.getNombre() + " a " + ((jugador == jugador1) ? "Jugador2" : "Jugador1"));
-        System.out.print("  ");
-        for (int i = 0; i < disparos.length; i++) {
-            System.out.print(jugada.columnaLetra(i) + " ");
-        }
-        System.out.println();
-        for (int i = 0; i < disparos.length; i++) {
-        	 System.out.print(jugada.fila(i) + " ");
-            for (int j = 0; j < disparos[i].length; j++) {
-                System.out.print(disparos[i][j] + " ");
-            }
-            System.out.println();
-        }
-        mostrarTableroBarcos(jugador);
+		int[][] disparos = (jugador.getNombre().equals("jugador1")) ? disparos2 : disparos1;
+	    System.out.println("Disparos del " + jugador.getNombre() + " a " + ((jugador == jugador1) ? "Jugador2" : "Jugador1"));
+	    System.out.print("  ");
+	    for (int i = 0; i < disparos.length; i++) {
+	        System.out.print(jugada.columnaLetra(i) + " ");
+	    }
+	    System.out.println();
+	    for (int i = 0; i < disparos.length; i++) {
+	        System.out.print(jugada.fila(i) + " ");
+	        for (int j = 0; j < disparos[i].length; j++) {
+	            System.out.print(disparos[i][j] + " ");
+	        }
+	        System.out.println();
+	    }
+	    mostrarTableroBarcos(jugador);
 	}
-	public void mostrarTableroBarcos(Jugador jugador) throws Exception{
-		int[][] disparos = (jugador.getNombre().equals("jugador1")) ? disparos1 : disparos2;
-        LinkedList barcos = jugador.getBarcos();
-        int[][] barcosJ1 =jugador.getTablero();
-        System.out.println("Tablero del " + jugador.getNombre());
-        System.out.print("  ");
-        for (int i = 0; i < barcosJ1.length; i++) {
-            System.out.print(jugada.columnaLetra(i) + " ");
-        }
-        System.out.println();
-        for (int i = 0; i < barcosJ1.length; i++) {
-            System.out.print(jugada.fila(i) + " ");
-            for (int j = 0; j < barcosJ1[i].length; j++) {
-                char marca = (barcosJ1[i][j] == 0) ? '0' : (barcosJ1[i][j] == 1) ? 'X' : (barcosJ1[i][j] == 2) ? 'I' : 'B';
-                System.out.print(marca + " ");
-            }
-            System.out.println();
-        }	
+
+	public void mostrarTableroBarcos(Jugador jugador) throws Exception {
+	    System.out.println("Tablero del " + ((jugador == jugador1) ? "Jugador1" : "Jugador2"));
+	    int[][] barcosJugador = (jugador == jugador1) ? jugador1.getTablero() : jugador2.getTablero();
+	    System.out.print("  ");
+	    for (int i = 0; i < barcosJugador.length; i++) {
+	        System.out.print(jugada.columnaLetra(i) + " ");
+	    }
+	    System.out.println();
+	    for (int i = 0; i < barcosJugador.length; i++) {
+	        System.out.print(jugada.fila(i) + " ");
+	        for (int j = 0; j < barcosJugador[i].length; j++) {
+	            char marca = (barcosJugador[i][j] == 0) ? '0' : (barcosJugador[i][j] == 1) ? 'X' : (barcosJugador[i][j] == 2) ? 'I' : 'B';
+	            System.out.print(marca + " ");
+	        }
+	        System.out.println();
+	    }
 	}
+	public boolean juegoTerminao(Jugador jugador)throws Exception {
+		LinkedList barcos =jugador.getBarcos();
+ 	    for(int i=0;i<barcos.size();i++) {
+ 	    	Barco barco=(Barco)barcos.get(i);
+ 	    	 if (!barco.estaHundido()) {
+                 return false;
+             }
+ 	    }
+        return true;
+    }
 }
 	
