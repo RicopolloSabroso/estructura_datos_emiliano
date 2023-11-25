@@ -1,5 +1,9 @@
 package proyecto;
 
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import estructura.lista.DoubleLinkedList;
 import estructura.lista.LinkedList;
 
@@ -88,7 +92,8 @@ public class Tablero {
 	    for (int i = 0; i < disparos.length; i++) {
 	        System.out.print(jugada.fila(i) + " ");
 	        for (int j = 0; j < disparos[i].length; j++) {
-	            System.out.print(disparos[i][j] + " ");
+	        	char marca = (disparos[i][j] == 0) ? '0' : (disparos[i][j] == 1) ? 'X' : (disparos[i][j] == 2) ? 'I' : 'B';
+		        System.out.print(marca + " ");
 	        }
 	        System.out.println();
 	    }
@@ -122,5 +127,15 @@ public class Tablero {
  	    }
         return true;
     }
+	public boolean disparoValido(Jugador jugador, String posicion) {
+	    int[][] disparos = (jugador.getNombre().equals("jugador1")) ? disparos2 : disparos1;
+	    int fila = jugada.filaIndex(posicion);
+	    int columna = jugada.columnaEntera(posicion);
+	    if (disparos[fila][columna] != 0) {
+	        System.out.println("Posición inválida. Ya has disparado en esa ubicación.");
+	        return false;
+	    }
+	    return true;
+	}
 }
 	
