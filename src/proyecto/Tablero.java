@@ -54,6 +54,7 @@ public class Tablero {
 				}
 			}
 		}
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		return resultado;
 	}
 	public void barcoHundido(Jugador jugador, String posicion)throws Exception {

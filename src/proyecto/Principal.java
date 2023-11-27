@@ -25,7 +25,6 @@ public class Principal {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         Jugador resultado = null;
-
         Tablero tablero = new Tablero(jugador1, jugador2);
       	resultado = jugador1;
         while (true) {
