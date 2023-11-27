@@ -16,6 +16,10 @@ public class Principal {
         Tablero tablero = new Tablero(jugador1, jugador2);
       	resultado = jugador1;
         while (true) {
+        	 if (tablero.juegoTerminao(resultado)) {
+                 System.out.println("¡Fin del juego! El " + resultado.getNombre() + " ha ganado.");
+                 break;
+             }
             System.out.println("Turno: " + resultado.getNombre());
             tablero.mostrarTableroDisparosYBarcos(resultado);
             String disparo = resultado.coordenadaValida();
@@ -23,11 +27,6 @@ public class Principal {
                 disparo = resultado.coordenadaValida();
             }
             resultado = tablero.disparar(resultado, disparo);
-            if (tablero.juegoTerminao(resultado)) {
-                System.out.println("¡Fin del juego! El jugador " + resultado.getNombre() + " ha ganado.");
-                break;
-            }
-
         }
     }
 }

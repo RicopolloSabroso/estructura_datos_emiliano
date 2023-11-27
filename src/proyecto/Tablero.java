@@ -38,7 +38,7 @@ public class Tablero {
 		}
 		tableroContrario[jugada.filaIndex(posicion)][jugada.columnaEntera(posicion)]=1;
 		temp[jugada.filaIndex(posicion)][jugada.columnaEntera(posicion)]=1;
-		for(int i=0;i<barcos.size()-1;i++) {
+		for(int i=0;i<barcos.size();i++) {
 			Barco barco=(Barco)barcos.get(i);
 			for(int j=0;j<barco.getPosiciones().length;j++) {
 				int fila=jugada.filaIndex(barco.getPosiciones()[j]);
@@ -92,7 +92,7 @@ public class Tablero {
 	    for (int i = 0; i < disparos.length; i++) {
 	        System.out.print(jugada.fila(i) + " ");
 	        for (int j = 0; j < disparos[i].length; j++) {
-	        	char marca = (disparos[i][j] == 0) ? '0' : (disparos[i][j] == 1) ? 'X' : (disparos[i][j] == 2) ? 'I' : 'B';
+	        	char marca = (disparos[i][j] == 0) ? '0' : (disparos[i][j] == 1) ? 'X' : (disparos[i][j] == 2) ? 'I' : (disparos[i][j] == 3) ? 'H' : 'B';
 		        System.out.print(marca + " ");
 	        }
 	        System.out.println();
@@ -111,14 +111,14 @@ public class Tablero {
 	    for (int i = 0; i < barcosJugador.length; i++) {
 	        System.out.print(jugada.fila(i) + " ");
 	        for (int j = 0; j < barcosJugador[i].length; j++) {
-	            char marca = (barcosJugador[i][j] == 0) ? '0' : (barcosJugador[i][j] == 1) ? 'X' : (barcosJugador[i][j] == 2) ? 'I' : 'B';
+	            char marca = (barcosJugador[i][j] == 0) ? '0' : (barcosJugador[i][j] == 1) ? 'X' : (barcosJugador[i][j] == 2) ? 'I' :  (barcosJugador[i][j] == 3) ? 'H' : 'B';
 	            System.out.print(marca + " ");
 	        }
 	        System.out.println();
 	    }
 	}
 	public boolean juegoTerminao(Jugador jugador)throws Exception {
-		LinkedList barcos =jugador.getBarcos();
+		LinkedList barcos =(jugador == jugador1) ?jugador2.getBarcos() : jugador1.getBarcos();
  	    for(int i=0;i<barcos.size();i++) {
  	    	Barco barco=(Barco)barcos.get(i);
  	    	 if (!barco.estaHundido()) {

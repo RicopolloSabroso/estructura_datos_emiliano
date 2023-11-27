@@ -51,6 +51,8 @@ public class Jugador {
 	        	}
 	            
 	        }
+	        mostrarTableroBarcos(); 
+	        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	    }
 
 	    private boolean barcoOcupado(String posicion, int tam, Ubicacion ubicacion) throws Exception{
@@ -77,7 +79,7 @@ public class Jugador {
 					}
 	    	 }
 	    	 
-			System.out.println("Tablero y Barcos") ;
+			System.out.println("Tablero y Barcos del: "+ this.nombre) ;
 			System.out.print("  ");
 			for (int i = 0; i < tablero.length; i++) {
 				System.out.print(jugada.columnaLetra(i) + " ");
@@ -108,7 +110,5 @@ public class Jugador {
             }
             return coordenada;
 		}
-		public void setTablero(int[][] tablero) {
-			this.tablero = tablero;
-		}
+
 }
