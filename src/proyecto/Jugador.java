@@ -40,7 +40,7 @@ public class Jugador {
 	        		Barco barco = new Barco(posicion, Barco.Ubicacion.valueOf("vertical"),tam[i]);
 	 	            this.barcos.add(barco);
 	        	}else {
-	        		System.out.println("Elige la orientación del barco (Horizontal o Vertical): ");
+	        		System.out.println("Elige la orientación del barco (Horizontal o Vertical, Escribelo completo): ");
 		            String orientacion = leer.nextLine().toLowerCase();
 		            while (!orientacionValida(orientacion)|| !jugada.entraEnRango(posicion, tam[i], Barco.Ubicacion.valueOf(orientacion))||barcoOcupado(posicion,tam[i],Barco.Ubicacion.valueOf(orientacion))) {
 		                System.out.println("orientacion inválida o el barco se pasa de rango . Porfavor vuelve a intentarlo ");
