@@ -60,21 +60,25 @@ public class Tablero {
 	public void barcoHundido(Jugador jugador, String posicion)throws Exception {
 	    if(jugador == jugador1) {
 	    	 LinkedList barcos = jugador2.getBarcos();
+	    	 int[][] barcosJugador = jugador2.getTablero();
 	 	    for(int i=0;i<barcos.size();i++) {
 	 	    	Barco barco=(Barco)barcos.get(i);
 	 	        if ( barco.estaHundido()) {
 	 	            for (String posicionBarco : barco.getPosiciones()) {
 	 	               disparos2[jugada.filaIndex(posicionBarco)][jugada.columnaEntera(posicionBarco)]= 3; 
+	 	              barcosJugador[jugada.filaIndex(posicionBarco)][jugada.columnaEntera(posicionBarco)]= 3;
 	 	            }
 	 	        }
 	 	    }
 	    }else {
+	    	int[][] barcosJugador = jugador1.getTablero() ;
 	    	LinkedList barcos =jugador1.getBarcos();
 	 	    for(int i=0;i<barcos.size();i++) {
 	 	    	Barco barco=(Barco)barcos.get(i);
 	 	        if ( barco.estaHundido()) {
 	 	            for (String posicionBarco : barco.getPosiciones()) {
-	 	               disparos1[jugada.filaIndex(posicionBarco)][jugada.columnaEntera(posicionBarco)] = 3; 
+	 	               disparos1[jugada.filaIndex(posicionBarco)][jugada.columnaEntera(posicionBarco)] = 3;
+	 	              barcosJugador[jugada.filaIndex(posicionBarco)][jugada.columnaEntera(posicionBarco)]= 3;
 	 	            }
 	 	        }
 	 	    }
