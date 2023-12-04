@@ -102,10 +102,10 @@ public class Tablero {
 	        }
 	        System.out.println();
 	    }
-	    mostrarTableroBarcos(jugador);
+	    mostrarTableroBarcosJu(jugador);
 	}
 
-	public void mostrarTableroBarcos(Jugador jugador) throws Exception {
+	public void mostrarTableroBarcosJu(Jugador jugador) throws Exception {
 	    System.out.println("Tablero del " + ((jugador == jugador1) ? "Jugador1" : "Jugador2"));
 	    int[][] barcosJugador = (jugador == jugador1) ? jugador1.getTablero() : jugador2.getTablero();
 	    System.out.print("  ");

@@ -8,7 +8,7 @@ public class Principal {
 
 	public static void main(String[] args) throws Exception {
         Scanner leer = new Scanner(System.in);
-        System.out.println("BATTLESHIP");
+        System.out.println("\t\t\tBATTLESHIP");
         System.out.println("\tReglas\n-Una vez posicionas tus barcos y comienzas la partida, no podrás volver a cambiarlos de posición.\n-Podrás disparar en cualquier casilla del tablero, salvo en las que ya has disparado.\n-No puedes deshacer disparos ni propios ni de tus oponentes.\n-Es un juego por turnos: haces tu disparo, si es \"agua\" el turno pasa a tu oponente; si \"tocas\" y/o hundes un barco enemigo, vuelves a disparar.\n-La partida acaba cuando un jugador ha hundido la flota completa del enemigo. \n");
         System.out.println("-Cada jugador tiene una flota de 9 barcos de diferente tamaño, por lo que cada uno ocupará un número determinado de casillas en el tablero.\n"
         		+ "\t-EL barco 1 ocupa 4 casillas.\n"
