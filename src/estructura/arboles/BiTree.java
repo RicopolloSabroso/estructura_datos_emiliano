@@ -69,4 +69,15 @@ public class BiTree {
 		}
 		
 	}
+	public void postorden() {
+		postorden(r);
+	}
+	
+	private void postorden(NumericNodoArbol r) {
+		if(null!=r) {
+			postorden(r.getIzquierda());
+			postorden(r.getDerecha());
+			System.out.println(r.getDato());
+		}
+	}	
 }

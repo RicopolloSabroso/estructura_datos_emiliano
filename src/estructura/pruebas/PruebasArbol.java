@@ -7,17 +7,22 @@ public class PruebasArbol {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BiTree arbol=new BiTree();
-		arbol.add(8);
-		arbol.add(1);
-		arbol.add(1);
-		arbol.add(0);
-		arbol.add(4);
+		arbol.add(67);
+		arbol.add(43);
+		arbol.add(11);
+		arbol.add(55);
 		arbol.add(5);
-		arbol.add(2);
-		arbol.add(10);
-		arbol.add(9);
-		arbol.add(15);
-		arbol.preorden();
+		arbol.add(13);
+		arbol.add(50);
+		arbol.add(56);
+		arbol.add(80);
+		arbol.add(70);
+		arbol.add(68);
+		arbol.add(74);
+		arbol.add(92);
+		arbol.add(90);
+		arbol.add(95);
+		arbol.postorden();
 	}
 
 }
